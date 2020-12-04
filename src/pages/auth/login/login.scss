@@ -1,0 +1,76 @@
+.login-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+
+    &__image {
+        width: 50%;
+        height: 100%;
+        background-image: url("https://res.cloudinary.com/alainmucyo/image/upload/v1607075597/My%20images/10939_trnhxh.jpg");
+        background-size: cover;
+    }
+    &__form {
+        width: 50%;
+        padding: 5rem 10rem;
+        background-color: var(--color-white);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &__title {
+            margin-bottom: 6rem;
+            &-title{
+                font-size: 3rem;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+        }
+        &-register{
+            display: inline-block;
+        }
+    }
+}
+.forgot-password{
+    float: right;
+}
+/* 1200px */
+@media only screen and (max-width: 75em) {
+    .login-container__image {
+        width: 45%;
+    }
+    .login-container__form {
+        width: 55%;
+        padding: 3rem 5rem;
+    }
+}
+/* 900px */
+@media only screen and (max-width: 56.25em) {
+    .login-container__image {
+        width: 35%;
+    }
+    .login-container__form {
+        width: 65%;
+        padding: 3rem 5rem;
+    }
+    .login-container__form__title-title{
+        font-size: 2.5rem;
+    }
+    .login-container__form__title {
+        margin-bottom: 4rem;
+    }
+}
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+    .login-container__image {
+        width: 0;
+    }
+    .login-container__form {
+        width: 100%;
+        padding: 2rem 3rem;
+    }
+    .login-container__form__title-title{
+        font-size: 2rem;
+    }
+    .login-container__form__title {
+        margin-bottom: 3rem;
+    }
+}

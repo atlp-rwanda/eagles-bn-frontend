@@ -1,0 +1,75 @@
+.signup-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  &-image {
+    width: 50%;
+    height: 100%;
+    background-image: url('https://res.cloudinary.com/alainmucyo/image/upload/v1607075597/My%20images/10939_trnhxh.jpg');
+    background-size: cover;
+  }
+
+  &-form {
+    width: 50%;
+    padding: 5rem 10rem;
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &-header-section {
+      margin-bottom: 6rem;
+    }
+    &-title {
+      margin-bottom: 6rem;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    &-link {
+      display: inline-block;
+    }
+  }
+}
+
+/* 1200px */
+@media only screen and (max-width: 75em) {
+  .signup-container-image {
+    width: 45%;
+  }
+  .signup-container-form {
+    width: 55%;
+    padding: 3rem 5rem;
+  }
+}
+/* 900px */
+@media only screen and (max-width: 56.25em) {
+  .signup-container-image {
+    width: 35%;
+  }
+  .signup-container-form {
+    width: 65%;
+    padding: 3rem 5rem;
+  }
+  .signup-container-form-header-section-title {
+    font-size: 2.5rem;
+  }
+  .signup-container-form-header-section {
+    margin-bottom: 4rem;
+  }
+}
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .signup-container-image {
+    width: 0;
+  }
+  .signup-container-form {
+    width: 100%;
+    padding: 2rem 3rem;
+  }
+  .signup-container-form-header-section-title {
+    font-size: 2rem;
+  }
+  .signup-container-form-header-section {
+    margin-bottom: 3rem;
+  }
+}

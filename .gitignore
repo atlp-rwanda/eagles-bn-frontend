@@ -1,6 +1,8 @@
 .env
 node_modules
+coverage
 build
 dist
 .DS_Store
 *-lock.json
+.idea
