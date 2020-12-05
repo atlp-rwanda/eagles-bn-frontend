@@ -20,6 +20,9 @@
   "homepage": "https://github.com/atlp-rwanda/eagles-bn-frontend#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-limit": "^0.1.0",
+    "helmet": "^4.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
