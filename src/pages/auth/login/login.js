@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {authStatus} from "../../../store/actions/auth";
 import {setLoading} from "../../../store/actions/loading";
 import {Redirect} from "react-router-dom";
+import {FormInput} from "../../../components/form/input";
 
 
 class Login extends Component {
@@ -19,7 +20,7 @@ class Login extends Component {
                 email: '',
                 password: ''
             },
-            redirect:false
+            redirect: false
         }
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
@@ -29,7 +30,6 @@ class Login extends Component {
     handleEmail(e) {
         this.setState({form: {...this.state.form, email: e.target.value}});
     }
-
     handlePassword(e) {
         this.setState({form: {...this.state.form, password: e.target.value}});
     }
@@ -42,64 +42,41 @@ class Login extends Component {
             .then(({data}) => {
                 localStorage.setItem("token", data.accessToken)
                 this.props.setLoading(false)
-                this.setState({redirect:true})
+                this.setState({redirect: true})
             })
             .catch(({response}) => {
                 if (response && response.status !== 500) {
                     this.setState({errMessage: "Invalid login credentials", loginFailed: true})
                 }
-                console.log("Failed")
                 this.props.setLoading(false)
             })
 
     }
 
     render() {
-        if (this.state.redirect)
-            return <Redirect to="/dashboard" from="/login"/>
-
+        if (this.state.redirect) return <Redirect to="/dashboard" from="/login"/>
         return (
             <div className="login-container">
-
-                <div className="login-container__image">
-                </div>
-                <div className="login-container__form">
-                    {this.props.loading ? <Loader/> : ''}
+                <div className="login-container__image"/>
+                <div className="login-container__form">{this.props.loading ? <Loader/> : ''}
                     <div className="login-container__form__title">
-                        <h2 className="login-container__form__title-title">Welcome to <b>Barefoot Nomad</b>!
-                        </h2>
-                        <p className="login-container__form__title-register">
-                            New here? <a href="#">create an account!</a>
-                        </p>
+                        <h2 className="login-container__form__title-title">Welcome to <b>Barefoot Nomad</b>!</h2>
+                        <p className="login-container__form__title-register">New here? <a href="#">create an account!</a></p>
                     </div>
-
                     <form className="login-container__form-form" onSubmit={this.handleSubmit}>
+                        <FormInput label="E-mail" type="email" required={true} invalid={this.state.loginFailed}
+                                   changed={this.handleEmail} value={this.state.form.email}
+                                   errMessage={this.state.errMessage}/>
+                        <FormInput type={"password"} value={this.state.form.password} label={"Password"} changed={this.handlePassword}/>
+                        <a href="#" className="forgot-password">Forgot password?</a>
                         <div className="form-group">
-                            <label htmlFor="email">E-mail</label>
-                            <input type="email"
-                                   className={`form-control ${this.state.loginFailed ? 'input-invalid' : ''}`}
-                                   onChange={this.handleEmail}
-                                   value={this.state.form.email} id="email"/>
-                            {this.state.loginFailed ?
-                                <span className="text-invalid">{this.state.errMessage}</span> : ''}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <a href="#" className="forgot-password">Forgot password?</a>
-                            <input type="password" className="form-control" id="password" onChange={this.handlePassword}
-                                   value={this.state.form.password}/>
-                        </div>
-                        <div className="form-group">
-                            <button type="submit" className="btn btn-primary">
-                                {this.props.loading ? 'Logging in...' : 'Login'}
-                            </button>
+                            <button type="submit" className="btn btn-primary">{this.props.loading ? 'Logging in...' : 'Login'}</button>
                         </div>
                     </form>
                 </div>
             </div>
         )
     }
-
 }
 
 const mapDispatchToProps = (dispatch) => {
