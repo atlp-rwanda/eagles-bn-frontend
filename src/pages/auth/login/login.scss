@@ -2,37 +2,32 @@
     display: flex;
     flex-wrap: wrap;
     height: 100vh;
-}
 
-.login-container__image {
-    width: 50%;
-    height: 100%;
-    background-image: url("https://res.cloudinary.com/alainmucyo/image/upload/v1607075595/My%20images/72_pqykxv.jpgz");
-    background-size: cover;
-}
-
-.login-container__form {
-    width: 50%;
-    padding: 5rem 10rem;
-    background-color: var(--color-white);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.login-container__form__title {
-    margin-bottom: 6rem;
-}
-.login-container__form__title-title{
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-.login-container__form-register{
-    display: inline-block;
-}
-.login-container__form-form {
-    /*margin-top: 2rem;*/
+    &__image {
+        width: 50%;
+        height: 100%;
+        background-image: url("https://res.cloudinary.com/alainmucyo/image/upload/v1607075595/My%20images/72_pqykxv.jpg");
+        background-size: cover;
+    }
+    &__form {
+        width: 50%;
+        padding: 5rem 10rem;
+        background-color: var(--color-white);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &__title {
+            margin-bottom: 6rem;
+            &-title{
+                font-size: 3rem;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+        }
+        &-register{
+            display: inline-block;
+        }
+    }
 }
 .forgot-password{
     float: right;

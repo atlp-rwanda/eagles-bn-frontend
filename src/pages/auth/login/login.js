@@ -1,9 +1,14 @@
 import React, {Component} from "react";
-import "./login.css"
+import "./login.scss"
 import axios from "axios";
-import Loading from "../../../components/loading/loading";
+import Loader from "../../../components/loading/loading";
+import {connect} from "react-redux";
+import {authStatus} from "../../../store/actions/auth";
+import {setLoading} from "../../../store/actions/loading";
+import {Redirect} from "react-router-dom";
 
-export default class Login extends Component {
+
+class Login extends Component {
     constructor() {
         super();
         this.state = {
@@ -13,7 +18,8 @@ export default class Login extends Component {
             form: {
                 email: '',
                 password: ''
-            }
+            },
+            redirect:false
         }
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
@@ -30,29 +36,35 @@ export default class Login extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.setState({loading: true})
+        this.props.authStatus(true)
+        this.props.setLoading(true)
         axios.post("/user/login", {...this.state.form})
             .then(({data}) => {
                 localStorage.setItem("token", data.accessToken)
-                this.setState({loading: false, errMessage: "", loginFailed: false, form: {email: "", password: ""}})
+                this.props.setLoading(false)
+                this.setState({redirect:true})
             })
             .catch(({response}) => {
-                if (response.status !== 500) {
+                if (response && response.status !== 500) {
                     this.setState({errMessage: "Invalid login credentials", loginFailed: true})
-                    this.setState({loading: false})
                 }
+                console.log("Failed")
+                this.props.setLoading(false)
             })
 
     }
 
     render() {
+        if (this.state.redirect)
+            return <Redirect to="/dashboard" from="/login"/>
+
         return (
             <div className="login-container">
 
                 <div className="login-container__image">
                 </div>
                 <div className="login-container__form">
-                    {this.state.loading ?<Loading/>:''}
+                    {this.props.loading ? <Loader/> : ''}
                     <div className="login-container__form__title">
                         <h2 className="login-container__form__title-title">Welcome to <b>Barefoot Nomad</b>!
                         </h2>
@@ -79,7 +91,7 @@ export default class Login extends Component {
                         </div>
                         <div className="form-group">
                             <button type="submit" className="btn btn-primary">
-                                {this.state.loading ? 'Logging in...' : 'Login'}
+                                {this.props.loading ? 'Logging in...' : 'Login'}
                             </button>
                         </div>
                     </form>
@@ -87,4 +99,17 @@ export default class Login extends Component {
             </div>
         )
     }
+
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        authStatus: (payload) => dispatch(authStatus(payload)),
+        setLoading: (payload) => dispatch(setLoading(payload))
+    }
+};
+const mapStateToProps = (state) => {
+    const {loading} = state
+    return {loading}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

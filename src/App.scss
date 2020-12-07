@@ -92,11 +92,12 @@ a:hover{
   border: solid transparent 1px;
   border-radius: 7px;
   transition: .2s;
-}
-.form-control:focus{
-  outline: none;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  background-color: var(--color-grey-light-2);
+
+  &:focus{
+    outline: none;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    background-color: var(--color-grey-light-2);
+  }
 }
 .input-invalid{
   border: solid var(--color-danger) 1px;
@@ -115,34 +116,37 @@ a:hover{
   border-radius: 7px;
   cursor: pointer;
   transition: .2s;
+  &:hover{
+    transform: translateY(-1px);
+  }
+  &:focus{
+    transform: translateY(0);
+    outline: none;
+  }
 }
-.btn:hover{
-  transform: translateY(-1px);
-}
-.btn:focus{
-  transform: translateY(0);
-  outline: none;
-}
+
 .btn-primary{
   background-color: var(--primary-color);
   color: #FFFF;
+  &:focus{
+    background-color: var(--primary-color-dark);
+  }
+  &:hover{
+    background-color: var(--primary-color-light);
+  }
 }
 .btn-danger{
   background-color: var(--color-danger);
   color: #FFFF;
+
+  &:hover{
+    background-color: #f56565;
+  }
+  &:focus{
+    background-color: #c53030;
+  }
 }
-.btn-danger:hover{
-  background-color: #f56565;
-}
-.btn-danger:focus{
-  background-color: #c53030;
-}
-.btn-primary:focus{
-  background-color: var(--primary-color-dark);
-}
-.btn-primary:hover{
-  background-color: var(--primary-color-light);
-}
+
 .float-right{
   float: right;
 }

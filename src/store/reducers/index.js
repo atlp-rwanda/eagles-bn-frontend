@@ -1,8 +1,10 @@
 /* eslint-disable linebreak-style */
 import { combineReducers } from 'redux';
-import counterReducer from './counter';
+import authReducer from "./auth";
+import loadingReducer from "./loading";
 
 const allReducer = combineReducers({
-  counter: counterReducer,
+  auth: authReducer,
+  loading: loadingReducer
 });
 export default allReducer;
