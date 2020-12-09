@@ -5,3 +5,6 @@ dist
 .DS_Store
 *-lock.json
 .idea
+coverage
+.dccache
+.vscode

@@ -5,6 +5,7 @@ import { signupReducer } from '../signup/reducer';
 import { requestsReducer } from './requests';
 import { authReducer } from './auth';
 import { userReducer } from './user';
+import profileReducer from './profile';
 
 const allReducer = combineReducers({
   auth: authReducer,
@@ -12,5 +13,7 @@ const allReducer = combineReducers({
   request: requestsReducer,
   user: userReducer,
   signupReducer,
+  profile: profileReducer,
 });
+
 export default allReducer;
