@@ -15,6 +15,8 @@ import Profile from './pages/Profile';
 import Navbar from './components/shared/Navbar';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import RoleSettings from './pages/roles/users_fetching'
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/roles" component={RoleSettings}/>
           <Route component={Main} />
         </Switch>
       </div>
