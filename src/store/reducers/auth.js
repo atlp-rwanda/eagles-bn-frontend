@@ -1,13 +1,20 @@
-import * as types from "../action-types/action-types"
+import * as types from '../action-types/action-types';
 
-const authReducer = (state = {is_logged_in: false}, action) => {
-    switch (action.type) {
-        case types.SET_LOGGED_IN:
-            return {
-                is_logged_in: action.payload
-            }
-        default:
-            return state
-    }
-}
-export default authReducer
+// eslint-disable-next-line max-len
+export const authReducer = (state = { pending: false, login_success: false, error: null }, action) => {
+  switch (action.type) {
+    case types.SET_AUTH_PENDING:
+      return {
+        ...state, pending: true,
+      };
+    case types.SET_AUTH_SUCCESS:
+      return { ...state, pending: false, login_success: true };
+    case types.SET_AUTH_ERROR:
+      return { ...state, pending: false, error: action.error };
+    default:
+      return state;
+  }
+};
+export const getIsLoggedIn = (state) => state.auth.login_success;
+export const getLoginPending = (state) => state.auth.pending;
+export const getLoginError = (state) => state.auth.error;

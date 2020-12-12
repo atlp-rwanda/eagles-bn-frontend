@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import React from 'react';
 import './App.scss';
 import {
@@ -7,26 +6,30 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import Login from "./pages/auth/login/login";
-import Signup from './components/Signup'
-import Dashboard from "./pages/dashboard";
+import { ToastContainer } from 'react-toastify';
+import Main from './layout/main/Main';
+import 'react-toastify/dist/ReactToastify.css';
+// eslint-disable-next-line import/no-named-as-default
+import Signup from './components/Signup';
+// eslint-disable-next-line import/no-named-as-default
+import Login from './pages/auth/login/login';
 
 export default function App() {
-
   return (
     <Router>
       <div className="App">
         <header className="App-header">
+          <ToastContainer />
           <Switch>
-            <Route exact path="/" render={()=>(<Redirect to="/login" from="/"/>)}  />
+            <Route exact path="/" render={() => (<Redirect to="/login" from="/" />)} />
             <Route exact path="/login">
               <Login />
             </Route>
-            <Route exact path="/dashboard">
-              <Dashboard/>
-            </Route>
             <Route exact path="/signup">
-            <Signup/>
+              <Signup />
+            </Route>
+            <Route>
+              <Main />
             </Route>
           </Switch>
         </header>
@@ -34,4 +37,3 @@ export default function App() {
     </Router>
   );
 }
-

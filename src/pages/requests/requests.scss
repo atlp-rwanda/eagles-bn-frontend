@@ -1,0 +1,49 @@
+.card{
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 1.5rem 3rem;
+  border-radius: 3px;
+
+  &-header{
+  margin-bottom: 1.2rem;
+  }
+  &-body{
+
+  }
+  .requests-card{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.requests-table-container .rdt_TableHeader{
+  display: none !important;
+}
+.requests-card__form{
+  padding-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  &-input{
+    padding-right: 1.2rem;
+    width: (100%/5);
+
+    @media only screen and (max-width: 56.25em) {
+      & {
+        width: (100%/2);;
+      }
+      &:last-child {
+        width: (100%);;
+      }
+    }
+    @media only screen and (max-width: 37.5em) {
+      & {
+        width: (100%);;
+      }
+    }
+  }
+}
+.rdt_TableCol_Sortable div, .rdt_TableCell,.rdt_TableCell div{
+  font-size: 1.6rem;
+}
+.rdt_TableCol_Sortable div{
+  font-weight: 600;
+}

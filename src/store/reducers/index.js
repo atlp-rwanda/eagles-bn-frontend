@@ -1,11 +1,16 @@
 /* eslint-disable linebreak-style */
 import { combineReducers } from 'redux';
-import authReducer from "./auth";
-import loadingReducer from "./loading";
-import { signupReducer} from '../signup/reducer'
+import loadingReducer from './loading';
+import { signupReducer } from '../signup/reducer';
+import { requestsReducer } from './requests';
+import { authReducer } from './auth';
+import { userReducer } from './user';
+
 const allReducer = combineReducers({
   auth: authReducer,
   loading: loadingReducer,
-  signupReducer
+  request: requestsReducer,
+  user: userReducer,
+  signupReducer,
 });
 export default allReducer;

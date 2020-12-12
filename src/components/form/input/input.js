@@ -1,4 +1,5 @@
 import React from "react";
+import "./input.scss";
 
 export const FormInput = ({type, invalid, label, changed, value, errMessage, required, placeholder}) => {
     return (
