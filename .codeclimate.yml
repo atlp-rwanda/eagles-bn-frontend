@@ -1,0 +1,8 @@
+exclude_patterns:
+- "src/tests/"
+- "src/**/*.test.js"
+- "spec/"
+- "**/vendor/"
+- "node_modules/"
+- "webpack.config.js"
+- "webpack.dev.js"
