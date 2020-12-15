@@ -8,6 +8,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import Login from "./pages/auth/login/login";
+import Signup from './components/Signup'
 import Dashboard from "./pages/dashboard";
 
 export default function App() {
@@ -23,6 +24,9 @@ export default function App() {
             </Route>
             <Route exact path="/dashboard">
               <Dashboard/>
+            </Route>
+            <Route exact path="/signup">
+            <Signup/>
             </Route>
           </Switch>
         </header>

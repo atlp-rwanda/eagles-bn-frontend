@@ -61,7 +61,7 @@ class Login extends Component {
                 <div className="login-container__form">{this.props.loading ? <Loader/> : ''}
                     <div className="login-container__form__title">
                         <h2 className="login-container__form__title-title">Welcome to <b>Barefoot Nomad</b>!</h2>
-                        <p className="login-container__form__title-register">New here? <a href="#">create an account!</a></p>
+                        <p className="login-container__form__title-register">New here? <a href="/signup">create an account!</a></p>
                     </div>
                     <form className="login-container__form-form" onSubmit={this.handleSubmit}>
                         <FormInput label="E-mail" type="email" required={true} invalid={this.state.loginFailed}
