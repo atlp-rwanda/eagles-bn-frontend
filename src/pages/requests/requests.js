@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './requests.scss';
 import { connect } from 'react-redux';
+import Skeleton from 'react-loading-skeleton';
 import { FormInput } from '../../components/form/input/input';
 import { FormSelect } from '../../components/form/select/select';
 import RequestsTable from './requests-table';
@@ -23,16 +24,16 @@ class Requests extends Component {
         <div className="card-body">
           <form className="requests-card__form">
             <div className="requests-card__form-input">
-              <FormInput type="date" label="Departure Date" />
+              <FormInput type="date" label="Departure Date"/>
             </div>
             <div className="requests-card__form-input">
-              <FormInput type="date" label="Return Date" />
+              <FormInput type="date" label="Return Date"/>
             </div>
             <div className="requests-card__form-input">
-              <FormSelect options={['One way trip', 'Two way trip']} label="Trip type" />
+              <FormSelect options={['One way trip', 'Two way trip']} label="Trip type"/>
             </div>
             <div className="requests-card__form-input">
-              <FormSelect options={['Rejected', 'Approved']} label="Status" />
+              <FormSelect options={['Rejected', 'Approved']} label="Status"/>
             </div>
             <div className="requests-card__form-input">
               <label>&nbsp;</label>
@@ -40,7 +41,8 @@ class Requests extends Component {
             </div>
           </form>
 
-          <RequestsTable requests={this.props.requests} user={this.props.user} />
+          {this.props.pending ? <Skeleton count={20} height={40}/> :
+            <RequestsTable requests={this.props.requests} user={this.props.user}/>}
         </div>
       </div>
     );

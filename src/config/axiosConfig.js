@@ -2,12 +2,12 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function axiosConfig(axios) {
+
   if (process.env.NODE_ENV === 'development') {
     axios.defaults.baseURL = 'http://localhost:4000/api/';
   } else {
     axios.defaults.baseURL = 'http://eagles-bn-backend-staging.herokuapp.com/api/';
   }
-
   axios.interceptors.request.use((config) => {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');
