@@ -93,5 +93,4 @@ const mapStateToProps = (state) => ({
   is_logged_in: getIsLoggedIn(state),
   pending: getLoginPending(state),
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
