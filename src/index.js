@@ -1,28 +1,19 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable max-len */
-/* eslint-disable no-underscore-dangle */
-import React from 'react';
+import { applyMiddleware, compose, createStore } from 'redux';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk'
 import { Provider } from 'react-redux';
-import { composeWithDevTools } from "redux-devtools-extension";
+import axios from 'axios';
+import thunk from 'redux-thunk';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import App from './App';
 import allReducers from './store/reducers';
-import axios from 'axios';
-const middleware = [thunk]
+import axiosConfig from './config/axiosConfig';
+import React from 'react';
 
-if (process.env.NODE_ENV === 'development') {
-  axios.defaults.baseURL = "http://localhost:4000/api/";
-}
-else{
-  axios.defaults.baseURL = "http://eagles-bn-backend-staging.herokuapp.com/api/";
-}
+axiosConfig(axios);
 
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
-export const store = createStore(allReducers, composeWithDevTools(applyMiddleware(...middleware)));
+const store = createStore(allReducers, composeEnhancer(applyMiddleware(thunk)));
 ReactDOM.render(
   <Provider store={store}>
     <ErrorBoundary>
