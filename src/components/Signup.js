@@ -96,7 +96,6 @@ export class Signup extends Component {
         confirmPassword,
       };
       this.props.userSignup(newUser);
-      console.log(e);
     } else {
       this.setState({ ...this.state, generalErrors: 'All fields are required!' });
     }

@@ -6,14 +6,17 @@ import { FormInput } from '../../components/form/input/input';
 import { FormSelect } from '../../components/form/select/select';
 import RequestsTable from './requests-table';
 import fetchRequests from '../../store/actions/requests';
+import { updateTripStatus } from '../../store/tripStatus/actions';
 import { getRequests, getRequestsError, getRequestsPending } from '../../store/reducers/requests';
 import { getUser } from '../../store/reducers/user';
 
 class Requests extends Component {
+  constructor() {
+    super();
+  }
   componentDidMount() {
     this.props.fetchRequests();
   }
-
   render() {
     return (
       <div className="card">
@@ -40,22 +43,28 @@ class Requests extends Component {
               <button type="submit" className="btn btn-primary btn-block">Filter</button>
             </div>
           </form>
-
           {this.props.pending ? <Skeleton count={20} height={40}/> :
-            <RequestsTable requests={this.props.requests} user={this.props.user}/>}
+            this.props.isLoading?"Wait....":
+            <RequestsTable requests={this.props.requests} user={this.props.user} 
+            updateTripStatus={this.props.updateTripStatus}fetchRequests={this.props.fetchRequests}
+           />}
         </div>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchRequests: () => dispatch(fetchRequests()),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   fetchRequests: () => dispatch(fetchRequests()),
+// });
 const mapStateToProps = (state) => ({
   error: getRequestsError(state),
   requests: getRequests(state),
   pending: getRequestsPending(state),
   user: getUser(state),
+  isLoading:state.tripStatusReducer.isLoading,
+  tripStatusError:state.tripStatusReducer.error,
+  tripStatusMessage:state.tripStatusReducer.message,
+  // trip : state.bussinessReducer.businesses.find(business =>(business.id === Number(id))),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Requests);
+export default connect(mapStateToProps, {fetchRequests,updateTripStatus})(Requests);
