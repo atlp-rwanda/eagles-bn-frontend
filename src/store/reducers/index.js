@@ -5,6 +5,7 @@ import { signupReducer } from '../signup/reducer';
 import { requestsReducer } from './requests';
 import { authReducer } from './auth';
 import { userReducer } from './user';
+import { TripReducer, Accommodation } from './trip';
 
 const allReducer = combineReducers({
   auth: authReducer,
@@ -12,5 +13,7 @@ const allReducer = combineReducers({
   request: requestsReducer,
   user: userReducer,
   signupReducer,
+  TripReducer,
+  Accommodation,
 });
 export default allReducer;

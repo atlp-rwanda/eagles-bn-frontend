@@ -1,0 +1,129 @@
+.form-container{
+    width: 60%;
+    height: 40%;
+    margin-left: 18%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    $desktop: 840px;
+
+    @mixin desktop{
+        @media ( min-width: #{$desktop}){
+            @content;
+        }
+    }
+    .form-container{
+        @include desktop{
+            background-color: wheat
+        }
+    }
+    label{
+        font-size: 10;
+        
+    }
+    .div-left{
+        margin-left: 50%;
+        margin-top: -115%;
+        margin-right: 1%;
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 0.15px solid rgb(143, 186, 250);
+            border-radius: 4px;
+            resize: vertical;
+          }
+
+    }
+    .div-right{
+        width: 45%;
+        margin-left: 1%;
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 0.15px solid rgb(143, 186, 250);
+            border-radius: 4px;
+            resize: vertical;
+          }
+
+    }
+    button[type=submit] {
+        background-color: #0f47e0;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 50%;
+      }
+}
+.reqwesting{
+    background-color: #0f47e0;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 30%;
+}
+.dropdown{
+    font-size: 2rem;
+}
+
+header{
+    background:#ffff;
+    color: #2168db;
+    padding:5px 10px ;
+    min-height:70px;
+    display: flex;
+    width: 100%;
+    margin-left: 15%;
+    a{
+        text-decoration: none;
+        font-size: 16px;
+    }
+    li{
+        text-transform: uppercase;
+        display: inline;
+        padding:0 20px 0 20px;
+    }
+    .request{
+        padding: 0 20px 0 0;
+        background-color: #a5b9d9;
+    }
+    select {
+        padding: 12px;
+        border: 0.15px solid rgb(143, 186, 250);
+        border-radius: 4px;
+        resize: vertical;
+      }
+      .numbers{
+        width: 10%;
+        padding: 8px;
+        border: 0.15px solid rgb(143, 186, 250);
+        border-radius: 4px;
+        resize: vertical;
+        background-color: #c1f4f8;
+    }
+   
+}
+.searching{
+    padding: 12px 20px;
+    border: none;
+    display: flex;
+    form{
+        display: flex;
+    }
+    input {
+        width: 60%;
+        padding: 12px;
+        border: 0.15px solid rgb(143, 186, 250);
+        border-radius: 4px;
+        display: block;
+      }
+      .gobtn {
+        background-color: #0f47e0;
+        color: white;
+        padding: 6px 7px;
+        border: none;
+        cursor: pointer;
+        width: 60px;
+      }
+}

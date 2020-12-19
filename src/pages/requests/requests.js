@@ -8,6 +8,7 @@ import RequestsTable from './requests-table';
 import fetchRequests from '../../store/actions/requests';
 import { getRequests, getRequestsError, getRequestsPending } from '../../store/reducers/requests';
 import { getUser } from '../../store/reducers/user';
+import TripRequest from './trip-request';
 
 class Requests extends Component {
   componentDidMount() {
@@ -19,7 +20,7 @@ class Requests extends Component {
       <div className="card">
         <div className="card-header requests-card">
           <h3>Trip Requests</h3>
-          <a href="#" className="btn btn-primary btn-sm">Request trip</a>
+          <a href="#" className="btn btn-primary btn-sm">Request</a>
         </div>
         <div className="card-body">
           <form className="requests-card__form">
@@ -44,6 +45,7 @@ class Requests extends Component {
           {this.props.pending ? <Skeleton count={20} height={40}/> :
             <RequestsTable requests={this.props.requests} user={this.props.user}/>}
         </div>
+        <TripRequest />
       </div>
     );
   }
