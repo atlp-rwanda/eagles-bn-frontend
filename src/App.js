@@ -20,13 +20,11 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
         <ToastContainer />
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/login" from="/" />} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/profile" component={Profile} />
           <Route component={Main} />
         </Switch>
       </div>

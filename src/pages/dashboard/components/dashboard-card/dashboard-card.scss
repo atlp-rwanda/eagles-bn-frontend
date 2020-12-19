@@ -1,0 +1,50 @@
+$shadow: 0 3px 5px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+.dashboard-card{
+  padding: 4rem;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  box-shadow: $shadow;
+  transition: .2s;
+  cursor: pointer;
+
+  //1200px
+  @media only screen and (max-width: 75em) {
+    &{
+      padding: 3rem;
+    }
+  }
+  // 900px
+  @media only screen and (max-width: 56.25em) {
+    &{
+      padding: 2rem;
+    }
+  }
+
+  &:hover{
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  h4{
+    margin-top: 1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 1.6rem;
+    // 900px
+    @media only screen and (max-width: 56.25em) {
+      &{
+        font-size: 1.8rem;
+      }
+    }
+  }
+  p{
+    font-size: 1.4rem;
+    color: var(--color-grey-dark-2);
+    font-weight: 400;
+    // 900px
+    @media only screen and (max-width: 56.25em) {
+      &{
+        font-size: 1.6rem;
+      }
+    }
+
+  }
+}

@@ -11,9 +11,10 @@ function Accommodations({ image, name, description,id }) {
         <h5 className="card-title">{name}</h5>
         <p className="card-text">{description}</p>
         <div className="links">
-          <a href={`/accommodations/${id}`} className="btn btn-primary view-detail">
+          <Link to={`/accommodations/${id}`} className={"btn btn-primary view-detail"}>View Detail</Link>
+     {/*     <a href={`/accommodations/${id}`} className="btn btn-primary view-detail">
           view detail
-          </a>
+          </a>*/}
 
         </div>
       </div>

@@ -1,0 +1,21 @@
+$danger-color: #e53e3e;
+$success-color: #38a169;
+$primary-color: #3182ce;
+
+.alert{
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  font-weight: 600;
+  &-danger{
+  color: var(--color-danger);
+  background-color:lighten(#e53e3e,35);
+  }
+  &-success{
+  color: $success-color;
+  background-color:lighten(#38a169,45);
+  }
+  &-primary{
+  color: $primary-color;
+  background-color:lighten(#3182ce,37);
+  }
+}

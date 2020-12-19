@@ -1,37 +1,41 @@
 import React, { Component } from 'react';
 import DataTable from 'react-data-table-component';
 import Badge from '../../components/badge/badge';
+
 export default class RequestsTable extends Component {
   constructor() {
     super();
     this.state = {
-      status: "rejected",
-      tripId:'',
-      submitted:false
+      status: 'rejected',
+      tripId: '',
+      submitted: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange(e){
+
+  handleChange(e) {
     e.preventDefault();
-    this.setState({status:e.target.value, tripId:e.target.id});
+    this.setState({ status: e.target.value, tripId: e.target.id });
   }
-  handleSubmit (){
-    const {status, tripId}= this.state
-    const trip = {status}
-    this.props.updateTripStatus(trip,tripId)
-    this.setState({submitted:true})
-      window.location.reload()
+
+  handleSubmit() {
+    const { status, tripId } = this.state;
+    const trip = { status };
+    this.props.updateTripStatus(trip, tripId);
+    this.setState({ submitted: true });
+    window.location.reload();
   }
-  componentDidUpdate(prevPros, prevState){
-    const updatedRequest = prevPros.requests.find(request=>request.id===Number(this.state.tripId))
-    if(this.state.status!="" &&this.state.status!=updatedRequest.status){
-      if(this.state.tripId!="" && !this.state.submitted){
-       this.handleSubmit()
+
+  componentDidUpdate(prevPros, prevState) {
+    const updatedRequest = prevPros.requests.find((request) => request.id === Number(this.state.tripId));
+    if (this.state.status != '' && this.state.status != updatedRequest.status) {
+      if (this.state.tripId != '' && !this.state.submitted) {
+        this.handleSubmit();
       }
     }
-    
   }
+
   getColumns() {
     return [
       {
@@ -96,13 +100,15 @@ export default class RequestsTable extends Component {
       },
       {
         name: 'Actions',
-        cell: (row) => this.props.user.role==='manager'? 
-        <select className="form-control" onChange={this.handleChange} value={this.state.status} id={row.id}>
-        <option  value="rejected">reject</option>
-        <option  value="approved">approve</option>
-        </select>
-    :(<a href="#" className="btn btn-primary btn-xs">Edit</a>),
-           hide: 'sm',
+        cell: (row) => (this.props.user.role === 'manager'
+          ? (
+            <select className="form-control" onChange={this.handleChange} value={this.state.status} id={row.id}>
+              <option value="rejected">reject</option>
+              <option value="approved">approve</option>
+            </select>
+          )
+          : (<a href="#" className="btn btn-primary btn-xs">Edit</a>)),
+        hide: 'sm',
       },
     ];
   }

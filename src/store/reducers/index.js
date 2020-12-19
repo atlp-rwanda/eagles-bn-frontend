@@ -9,6 +9,9 @@ import { userReducer } from './user';
 import profileReducer from './profile';
 import oauthReducer from './oauthReducer';
 import accommodations from '../accommodations/accommodationReducer';
+import { requesterDashboardReducer } from './requester-dashboard';
+import { latestTripsReducer } from './latest-trips';
+import { popularAccommodationsReducer } from './popular-accommodations';
 
 const allReducer = combineReducers({
   auth: authReducer,
@@ -20,6 +23,9 @@ const allReducer = combineReducers({
   profile: profileReducer,
   socialLogin: oauthReducer,
   payload: accommodations,
+  requester_dashboard: requesterDashboardReducer,
+  latest_trips: latestTripsReducer,
+  popular_accommodations: popularAccommodationsReducer
 });
 
 export default allReducer;

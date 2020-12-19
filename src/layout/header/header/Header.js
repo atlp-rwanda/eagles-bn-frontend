@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import './navigation.scss';
-import logo from '../../../components/assets/logo.png';
+/* import { ReactComponent as CloseMenu } from '../assets/x.svg';
+import { ReactComponent as MenuIcon } from '../assets/menu.svg';
+import { ReactComponent as Logo } from '../assets/logo.svg'; */
+import './header.scss';
 
 const Header = () => {
   const [click, setClick] = useState(false);
@@ -11,8 +13,8 @@ const Header = () => {
       <div className="logo-nav">
         <div className="logo-container">
           <a href="#">
-            {/*<Logo className="logo" />*/}
-            <img src={logo} alt="app-logo" />
+            {/* <Logo className="logo" /> */}
+            Logo
           </a>
         </div>
         <ul className={click ? 'nav-options active' : 'nav-options'}>
@@ -25,15 +27,24 @@ const Header = () => {
           <li className="option" onClick={closeMobileMenu}>
             <a href="#">BLOG</a>
           </li>
+          <li className="option mobile-option" onClick={closeMobileMenu}>
+            <a href="#">SIGN-IN</a>
+          </li>
+          <li className="option mobile-option" onClick={closeMobileMenu}>
+            <a href="" className="sign-up">
+              SIGN-UP
+            </a>
+          </li>
         </ul>
       </div>
+
       <div className="mobile-menu" onClick={handleClick}>
         {click ? (
-          <span className="menu-icon">Close</span>
           // <CloseMenu className="menu-icon" />
+          <span>Close</span>
         ) : (
-          <span className="menu-icon">Menu</span>
           // <MenuIcon className="menu-icon" />
+          <span>Menu</span>
         )}
       </div>
     </div>

@@ -7,24 +7,37 @@ $font: Arial, Helvetica, sans-serif;
   display: flex;
   background: $primary-color;
   color: $link-color;
-  padding: 0 4rem;
+  padding: .2rem 4rem;
   justify-content: space-between;
   align-items: center;
   font-family: $font;
+  /* 900px */
+  @media only screen and (max-width: 56.25em) {
+    &{
+      align-items: flex-start;
+    }
+  }
+  .nav-item a{
+    color: var(--color-grey-light-1);
+  }
   a {
     color: $link-color;
     text-decoration: none;
     font-family: $font;
   }
-  ul {
+  .nav {
     display: flex;
     align-items: center;
     list-style-type: none;
-    li {
-      padding: 1.2rem;
+    /* 900px */
+    @media only screen and (max-width: 56.25em) {
+     &{
+       flex-direction: column;
+       justify-content: flex-start;
+     }
     }
-    li:hover {
-      color: $link-hover-color;
+    li {
+      padding: 1rem;
     }
     .profile-menu {
       list-style-type: none;

@@ -14,9 +14,11 @@ class Requests extends Component {
   constructor() {
     super();
   }
+
   componentDidMount() {
     this.props.fetchRequests();
   }
+
   render() {
     return (
       <div className="card">
@@ -27,27 +29,32 @@ class Requests extends Component {
         <div className="card-body">
           <form className="requests-card__form">
             <div className="requests-card__form-input">
-              <FormInput type="date" label="Departure Date"/>
+              <FormInput type="date" label="Departure Date" />
             </div>
             <div className="requests-card__form-input">
-              <FormInput type="date" label="Return Date"/>
+              <FormInput type="date" label="Return Date" />
             </div>
             <div className="requests-card__form-input">
-              <FormSelect options={['One way trip', 'Two way trip']} label="Trip type"/>
+              <FormSelect options={['One way trip', 'Two way trip']} label="Trip type" />
             </div>
             <div className="requests-card__form-input">
-              <FormSelect options={['Rejected', 'Approved']} label="Status"/>
+              <FormSelect options={['Rejected', 'Approved']} label="Status" />
             </div>
             <div className="requests-card__form-input">
               <label>&nbsp;</label>
               <button type="submit" className="btn btn-primary btn-block">Filter</button>
             </div>
           </form>
-          {this.props.pending ? <Skeleton count={20} height={40}/> :
-            this.props.isLoading?"Wait....":
-            <RequestsTable requests={this.props.requests} user={this.props.user} 
-            updateTripStatus={this.props.updateTripStatus}fetchRequests={this.props.fetchRequests}
-           />}
+          {this.props.pending ? <Skeleton count={6} height={40} />
+            : this.props.isLoading ? 'Wait....'
+              : (
+                <RequestsTable
+                  requests={this.props.requests}
+                  user={this.props.user}
+                  updateTripStatus={this.props.updateTripStatus}
+                  fetchRequests={this.props.fetchRequests}
+                />
+              )}
         </div>
       </div>
     );
@@ -62,9 +69,9 @@ const mapStateToProps = (state) => ({
   requests: getRequests(state),
   pending: getRequestsPending(state),
   user: getUser(state),
-  isLoading:state.tripStatusReducer.isLoading,
-  tripStatusError:state.tripStatusReducer.error,
-  tripStatusMessage:state.tripStatusReducer.message,
+  isLoading: state.tripStatusReducer.isLoading,
+  tripStatusError: state.tripStatusReducer.error,
+  tripStatusMessage: state.tripStatusReducer.message,
   // trip : state.bussinessReducer.businesses.find(business =>(business.id === Number(id))),
 });
-export default connect(mapStateToProps, {fetchRequests,updateTripStatus})(Requests);
+export default connect(mapStateToProps, { fetchRequests, updateTripStatus })(Requests);

@@ -1,0 +1,6 @@
+.popular-accommodations{
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
+  margin-top: 1rem;
+}
