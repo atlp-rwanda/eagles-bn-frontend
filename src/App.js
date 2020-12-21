@@ -16,6 +16,10 @@ import Navbar from './components/shared/Navbar';
 import NewAccommodation from './components/accommodations/NewAccommodation';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.scss';
+import { connect } from 'react-redux';
+import Dashboard from './pages/dashboard/dashboard';
+import ForgotPassword from './components/password/ForgotPassword';
+import ResetPassword from './components/password/ResetPassword';
 
 function App() {
   return (
@@ -39,6 +43,8 @@ function App() {
             <Navbar />
             <NewAccommodation />
           </Route>
+          <Route exact path="/forgotpassword" component={ForgotPassword} />
+          <Route path="/resetpassword" component={ResetPassword} />
           <Route component={Main} />
         </Switch>
       </div>

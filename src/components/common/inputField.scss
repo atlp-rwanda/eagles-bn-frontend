@@ -1,0 +1,20 @@
+input {
+  border: none;
+  border-bottom: 2px solid #000;
+  padding: 2px 5px;
+  font-size: 16px;
+  outline: none;
+  background: none;
+  color: #000;
+}
+.inputDiv {
+    display: flex;
+    flex-direction: column;
+    padding: 0%;
+    margin: auto;
+}
+.inputDiv label {
+    padding: 5px 0;
+    color: #000;
+    font-size: 18px;
+}
