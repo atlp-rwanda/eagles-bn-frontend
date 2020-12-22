@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const { PORT } = process.env;
+const { PORT, BASE_URL } = process.env;
 
 module.exports = {
   entry: {
@@ -38,6 +38,14 @@ module.exports = {
         test: /\.(s[ac]|c)ss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -45,7 +53,7 @@ module.exports = {
       template: path.join(__dirname, 'public/index.html'),
     }),
     new webpack.DefinePlugin({
-      'process.env': {},
+      'process.env': { BASE_URL: JSON.stringify(BASE_URL) },
     }),
   ],
 };

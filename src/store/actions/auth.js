@@ -7,7 +7,8 @@ export function loggingIn(payload) {
   return (dispatch) => {
     dispatch({ type: types.SET_AUTH_PENDING });
     dispatch(setLoading(true));
-    axios.post('/user/login', payload)
+    axios
+      .post('/user/login', payload)
       .then(({ data }) => {
         localStorage.setItem('token', data.accessToken);
         dispatch(setLoading(false));
@@ -17,7 +18,10 @@ export function loggingIn(payload) {
         if (response && response.status !== 500) {
           dispatch({
             type: types.SET_AUTH_ERROR,
-            error: { status: response.status, message: 'Invalid login credentials' },
+            error: {
+              status: response.status,
+              message: 'Invalid login credentials',
+            },
           });
         }
         dispatch(setLoading(false));

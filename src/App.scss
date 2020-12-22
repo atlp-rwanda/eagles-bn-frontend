@@ -87,8 +87,7 @@ a:hover {
   margin-bottom: 2rem;
 }
 
-
-.btn{
+.btn {
   &,
   &:link {
     text-decoration: none;
@@ -100,23 +99,23 @@ a:hover {
     border: none;
     border-radius: 7px;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
   }
-  &-sm{
-    padding: .9rem 1.8rem !important;
+  &-sm {
+    padding: 0.9rem 1.8rem !important;
     font-size: 1.2rem !important;
-
-  } &-xs{
-    padding: .5rem .8rem !important;
-  font-size: 1.2rem !important;
   }
-  &-block{
+  &-xs {
+    padding: 0.5rem 0.8rem !important;
+    font-size: 1.2rem !important;
+  }
+  &-block {
     width: 100% !important;
   }
-  &:hover{
+  &:hover {
     transform: translateY(-1px);
   }
-  &-loading{
+  &-loading {
     cursor: none;
   }
   &:focus {
@@ -125,28 +124,26 @@ a:hover {
   }
 }
 
-
-.btn-primary,
-{
+.btn-primary {
   &,
   .btn-primary:link {
     background-color: var(--primary-color) !important;
-    color: #FFFF !important;
+    color: #ffff !important;
   }
-  &:focus{
+  &:focus {
     background-color: var(--primary-color-dark);
   }
   &:hover {
     background-color: var(--primary-color-light);
   }
 }
-.btn-danger{
+.btn-danger {
   &,
   &:link {
     background-color: var(--color-danger);
-    color: #FFFF !important;
+    color: #ffff !important;
   }
-  &:hover{
+  &:hover {
     background-color: #f56565;
   }
   &:focus {
@@ -157,6 +154,6 @@ a:hover {
 .float-right {
   float: right;
 }
-.capitalize{
+.capitalize {
   text-transform: capitalize;
 }

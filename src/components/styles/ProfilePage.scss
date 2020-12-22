@@ -1,0 +1,76 @@
+$font: Arial;
+$link-color: #fcfcfc;
+$primary-color: #3376cb;
+
+.profile-page {
+  display: grid;
+  margin-top: 4rem;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+
+  .img {
+    margin: auto;
+    overflow: hidden;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background-color: $link-color;
+    border: 1px solid $primary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    width: 100%;
+  }
+  section {
+    width: 100%;
+  }
+}
+.form-paralled {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  label {
+    display: block;
+    font-family: $font;
+    margin-bottom: 2px;
+  }
+  select {
+    text-transform: capitalize !important;
+  }
+}
+.section-actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  button {
+    margin: 1.2rem;
+  }
+}
+.form__control {
+  padding: 1rem 0.2rem;
+
+  input,
+  select {
+    width: 86%;
+    padding: 8px 10px;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 400;
+    border: 0.7px solid #00425749;
+  }
+  input:disabled,
+  select:disabled {
+    background: #e6e4e449;
+    color: #747474;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .profile-page {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+}
