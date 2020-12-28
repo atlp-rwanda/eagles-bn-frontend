@@ -7,6 +7,7 @@ import { authReducer } from './auth';
 import { userReducer } from './user';
 import profileReducer from './profile';
 import oauthReducer from './oauthReducer';
+import accommodations from '../accommodations/accommodationReducer';
 
 const allReducer = combineReducers({
   auth: authReducer,
@@ -16,6 +17,7 @@ const allReducer = combineReducers({
   signupReducer,
   profile: profileReducer,
   socialLogin: oauthReducer,
+  payload: accommodations,
 });
 
 export default allReducer;
