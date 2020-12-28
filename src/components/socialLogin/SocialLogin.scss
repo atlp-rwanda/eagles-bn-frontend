@@ -1,0 +1,10 @@
+.social-login-link{
+    img {
+     width: 60px;
+     transform: scale(1); 
+     border-radius: 50%;
+   }
+}
+.social-login-link:hover {
+  transform: scale(1.07);
+}

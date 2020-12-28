@@ -6,6 +6,7 @@ import { requestsReducer } from './requests';
 import { authReducer } from './auth';
 import { userReducer } from './user';
 import profileReducer from './profile';
+import oauthReducer from './oauthReducer';
 
 const allReducer = combineReducers({
   auth: authReducer,
@@ -14,6 +15,7 @@ const allReducer = combineReducers({
   user: userReducer,
   signupReducer,
   profile: profileReducer,
+  socialLogin: oauthReducer,
 });
 
 export default allReducer;
