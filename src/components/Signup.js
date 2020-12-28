@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { userSignup } from '../store/signup/actions';
 import './signup.scss';
 import { Link } from 'react-router-dom';
+import SocialLogin from './socialLogin/socialView';
 
 const formValid = ({
   formErrors, generalErrors, successMessage, ...rest
@@ -147,6 +148,7 @@ export class Signup extends Component {
               {formErrors.confirmPassword ? <span className="text-invalid">{formErrors.confirmPassword}</span> : ''}
               <br />
               <button type="submit" className={!this.props.isLoading ? 'btn btn-primary' : 'btn btn-primary btn-loading'} data-testid="Register">{this.props.isLoading ? 'Submitting...' : 'Register'}</button>
+              <SocialLogin />
             </form>
           </div>
         </div>

@@ -14,7 +14,7 @@ axiosConfig(axios);
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(allReducers, composeEnhancer(applyMiddleware(thunk)));
+export const store = createStore(allReducers, composeEnhancer(applyMiddleware(thunk)));
 ReactDOM.render(
   <ErrorBoundary>
     <Provider store={store}>

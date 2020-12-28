@@ -1,4 +1,5 @@
 /* eslint-disable import/no-named-as-default */
+/* eslint-disable linebreak-style */
 import React from 'react';
 import {
   BrowserRouter as Router,
