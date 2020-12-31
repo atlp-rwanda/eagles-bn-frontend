@@ -3,4 +3,5 @@ export const initialState = {
   accommodations: [],
   error: null,
   accommodation: {},
+  bookSuccessMessage:''
 };

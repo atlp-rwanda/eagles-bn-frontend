@@ -1,6 +1,6 @@
 import React from 'react'
-
-function ViewRoam({price, details, imagesurl}) {
+import {Link} from 'react-router-dom'
+function ViewRoam({price, details, imagesurl, id}) {
     const styles= {
         display: 'flex',
         justifyContent: 'space-between',
@@ -24,6 +24,8 @@ function ViewRoam({price, details, imagesurl}) {
                 <h4><b style={boardTitle}>Details:</b> {details}</h4>
                 <img src={imagesurl} style={{width: '200px', objectFit: 'contain'}}/>
             </div>
+            <Link   to={`/rooms/${id}/booking`}>Book Now</Link>
+           
         </div>
         </>
     )

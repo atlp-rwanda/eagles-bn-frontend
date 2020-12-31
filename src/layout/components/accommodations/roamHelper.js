@@ -10,6 +10,7 @@ export const enhanceRooms = (values) => {
         details={room.details}
         price={room.price}
         key={room.id}
+        id={room.id}
         imagesurl={room.images}
         />;
     });
