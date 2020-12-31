@@ -14,7 +14,6 @@ export const signupError = (error) => ({
 });
 
 export const userSignup = (newUser) => (dispatch) => {
-  console.log('User registration...');
   dispatch(userCreation());
   axios.post('/user/signup', newUser).then((res) => {
     dispatch(userCreated(res.data.message));

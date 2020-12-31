@@ -1,0 +1,38 @@
+$link-color: #fcfcfc;
+$link-hover-color: #ffffff;
+$primary-color: #3376cb;
+$font: Arial, Helvetica, sans-serif;
+
+.navbar {
+  display: flex;
+  background: $primary-color;
+  color: $link-color;
+  padding: 0 4rem;
+  justify-content: space-between;
+  align-items: center;
+  font-family: $font;
+  a {
+    color: $link-color;
+    text-decoration: none;
+    font-family: $font;
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    li {
+      padding: 1.2rem;
+    }
+    li:hover {
+      color: $link-hover-color;
+    }
+    .profile-menu {
+      list-style-type: none;
+      padding: 0.2rem;
+      width: 3.4rem;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
