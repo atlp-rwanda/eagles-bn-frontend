@@ -14,7 +14,6 @@ function Accommodations({ image, name, description,id }) {
           <a href={`/accommodations/${id}`} className="btn btn-primary view-detail">
           view detail
           </a>
-
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ import { fetchCurrentUser } from '../../store/actions/current_user';
 import { getUser, getUserError, getUserPending } from '../../store/reducers/user';
 import Accommodations from '../../components/accommodations/Accomodations';
 import SingleAccommodation from '../../components/accommodations/SingleAccommodation';
+import Booking from '../../components/booking/booking'
 
 class Main extends Component {
   componentDidMount() {
@@ -25,7 +26,9 @@ class Main extends Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/requests" component={Requests} />
             <Route exact path="/accommodations" component={Accommodations} />
-            <Route path="/accommodations/:id" exact component={SingleAccommodation} />
+            <Route exact path="/accommodations/:id" exact component={SingleAccommodation} />
+            <Route exact path="/rooms/:id/booking" exact component={Booking} />
+            
           </div>
         ) : ''}
       </div>

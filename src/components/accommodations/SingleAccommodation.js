@@ -9,7 +9,6 @@ import Gallery from './accommodationImage';
 import Amenities from '../../layout/components/accommodations/viewServices';
 import {enhanceRooms} from '../../layout/components/accommodations/roamHelper';
 import {mapStateToProps} from './mapStateToProps'
-
 // eslint-disable-next-line react/prefer-stateless-function
 class Accomodations extends Component {
   
@@ -39,7 +38,7 @@ class Accomodations extends Component {
             <hr />
             <div className="amenser"> <Amenities amenities={amenity} services={service}/></div><hr />
             <div className="rooms"><h1>Rooms Available</h1><div>{roam}</div> </div>
-          </div> <div><h1 style={{color: 'red'}}>Another staff goes here. feel free to remove this h1</h1></div>
+          </div> 
         </div>
       </div>); }
 }
