@@ -1,0 +1,54 @@
+#title {
+    text-align: center;
+    font-family: arial, sans-serif;
+  }
+  
+  #users {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    margin-left: 4rem;
+    width: 92%;
+  }
+
+  #popupContainer{
+    float:right;
+    display:none
+  }
+  #users td, #users th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #users tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #users tr:hover {background-color: #ddd;}
+  
+  #users th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #7a95dd;
+    color: white;
+  }
+  .role_changing_message{
+     width: 350px;
+			margin-top: 80px;
+      margin-bottom: auto;
+      margin-left: 500px;
+      list-style: none;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+  }
+  #reload{
+    color: #17a2b8;
+  }
+
+/* 900px */
+@media only screen and (max-width: 56.25em) {
+  #users{
+    width: 100%;
+  }
+}

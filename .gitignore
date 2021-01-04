@@ -1,11 +1,10 @@
 .env
 node_modules
 build
-coverage
+coverage/
 dist
 .DS_Store
 *-lock.json
 .idea
-coverage
 .dccache
 .vscode

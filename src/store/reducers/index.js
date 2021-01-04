@@ -9,6 +9,8 @@ import { userReducer } from './user';
 import profileReducer from './profile';
 import oauthReducer from './oauthReducer';
 import accommodations from '../accommodations/accommodationReducer';
+import {roleReducer} from './users_fetching'
+import {roleSettingReducer} from './role_setting'
 
 const allReducer = combineReducers({
   auth: authReducer,
@@ -20,6 +22,8 @@ const allReducer = combineReducers({
   profile: profileReducer,
   socialLogin: oauthReducer,
   payload: accommodations,
+  roles: roleReducer,
+  role:roleSettingReducer
 });
 
 export default allReducer;
