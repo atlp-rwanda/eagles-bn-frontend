@@ -1,4 +1,4 @@
-$link-color: #fcfcfc;
+$link-color: #ececec;
 $link-hover-color: #ffffff;
 $primary-color: #3376cb;
 $font: Arial, Helvetica, sans-serif;
@@ -12,9 +12,11 @@ $font: Arial, Helvetica, sans-serif;
   align-items: center;
   font-family: $font;
   a {
-    color: $link-color;
-    text-decoration: none;
-    font-family: $font;
+    color: $link-color !important;
+    font: $font;
+    &:hover {
+      color: $link-hover-color !important;
+    }
   }
   ul {
     display: flex;
@@ -28,11 +30,54 @@ $font: Arial, Helvetica, sans-serif;
     }
     .profile-menu {
       list-style-type: none;
-      padding: 0.2rem;
+      cursor: pointer;
+      margin: 1.2rem;
+      padding: 0;
       width: 3.4rem;
+      height: 3.4rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: $link-color;
       img {
         width: 100%;
       }
     }
+  }
+}
+
+.profile-pane {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 3rem;
+  top: 5.5rem;
+  z-index: 3;
+  background-color: var(--primary-color-dark);
+  a {
+    padding: 1rem 2rem;
+    color: $link-color !important;
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+}
+
+.panes-container {
+  background: transparent;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  z-index: 1;
+  // &.chats,
+  &.profiles,
+  &.notifications {
+    outline: none;
+    height: 100vh;
+    border: none;
+    width: 100vw;
+    opacity: 1;
   }
 }

@@ -28,3 +28,8 @@ export function loggingIn(payload) {
       });
   };
 }
+
+export const logoutUser = () => (dispatch) => {
+  localStorage.clear();
+  dispatch({ type: types.AUTH_LOGOUT });
+};

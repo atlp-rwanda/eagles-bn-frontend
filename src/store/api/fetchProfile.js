@@ -18,7 +18,7 @@ export const handleCatch = (dispatch, dispatched, { response, request, message }
   }
   if (request) {
     toast.error(request);
-    return dispatch(dispatched(request));
+    return dispatch(dispatched(JSON.parse(error.request.response).error));
   }
   toast.error(message);
   return dispatch(dispatched(message));
