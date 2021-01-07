@@ -24,23 +24,10 @@ const createNotificationLink = (notification) => {
 };
 
 const Single = (notification) => {
-  const {
-    onClick,
-    id: noticeId,
-    creator_id: creatorId,
-    receiver_id: receiverId,
-    creator: { profile_image: image, first_name: fName, last_name: lName },
-    description,
-    createdAt,
-  } = notification;
-
+  const { onClick, id: noticeId, creator_id: creatorId, receiver_id: receiverId, creator: { profile_image: image, first_name: fName, last_name: lName }, description, createdAt } = notification;
   const dispatch = useDispatch();
-  const handleNotificationRead = (id) => {
-    dispatch(readNotification(id));
-    onClick();
-  };
+  const handleNotificationRead = (id) => { dispatch(readNotification(id)); onClick(); };
   const name = creatorId !== receiverId && `${fName} ${lName}`;
-
   return (
     <Link
       onClick={() => handleNotificationRead(noticeId)}
