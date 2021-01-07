@@ -7,17 +7,21 @@ import Badge from '../../badge/badge';
 import fetchAllNotifications from '../../../store/actions/notifications';
 import '../../styles/NotificationIcon.scss';
 
+export const handleTitleChange = (unread) => {
+  if (unread) {
+    if (!document.title.includes(') ')) {
+      document.title = `(${unread}) ${document.title}`;
+    } else document.title = `(${unread}) ${document.title.split(') ')[1]}`;
+  } else if (document.title.includes(') ')) {
+    const [, newTitle] = document.title.split(') ');
+    document.title = newTitle;
+  }
+};
+
 const NotificationIcon = ({ unread, onClick }) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
-    if (unread) {
-      if (!document.title.includes(') ')) {
-        document.title = `(${unread}) ${document.title}`;
-      } else document.title = `(${unread}) ${document.title.split(') ')[1]}`;
-    } else if (document.title.includes(') ')) {
-      const [, newTitle] = document.title.split(') ');
-      document.title = newTitle;
-    }
+    handleTitleChange(unread);
   }, [unread]);
   React.useEffect(() => dispatch(fetchAllNotifications()), []);
   return (
