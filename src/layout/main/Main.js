@@ -15,11 +15,6 @@ import {
   getUserPending,
 } from '../../store/reducers/user';
 import { fetchCurrentUser } from '../../store/actions/current_user';
-import {
-  getUser,
-  getUserError,
-  getUserPending,
-} from '../../store/reducers/user';
 import Accommodations from '../../components/accommodations/Accomodations';
 import SingleAccommodation from '../../components/accommodations/SingleAccommodation';
 import Booking from '../../components/booking/booking';
