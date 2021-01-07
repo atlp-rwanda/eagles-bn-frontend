@@ -1,14 +1,20 @@
 /* eslint-disable linebreak-style */
-import { OAUTH_FAILURE, OAUTH_SUCCESS, AUTH_MESSAGE } from '../action-types/action-types';
+import {
+  OAUTH_FAILURE,
+  OAUTH_SUCCESS,
+  AUTH_MESSAGE,
+  AUTH_LOGOUT,
+} from '../action-types/action-types';
 
 const initialState = {
+  token: '',
   authMessage: '',
-  token: localStorage.token,
   oauthErrors: null,
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case AUTH_LOGOUT: return { ...initialState, token: '' };
     case OAUTH_SUCCESS:
       return {
         ...state,
@@ -16,16 +22,10 @@ export default (state = initialState, { type, payload }) => {
         token: payload.token,
       };
     case OAUTH_FAILURE:
-      return {
-        ...state,
-        oauthErrors: payload.error,
-      };
+      return { ...state, oauthErrors: payload.error };
     case AUTH_MESSAGE:
-      return {
-        ...state,
-        authMessage: payload.message,
-      };
+      return { ...state, authMessage: payload.message };
     default:
-      return null;
+      return state;
   }
 };
