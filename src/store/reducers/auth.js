@@ -3,10 +3,10 @@ import * as types from '../action-types/action-types';
 // eslint-disable-next-line max-len
 export const authReducer = (state = { pending: false, login_success: false, error: null }, action) => {
   switch (action.type) {
+    case types.AUTH_LOGOUT:
+      return { ...state, pending: false, login_success: false };
     case types.SET_AUTH_PENDING:
-      return {
-        ...state, pending: true,
-      };
+      return { ...state, pending: true };
     case types.SET_AUTH_SUCCESS:
       return { ...state, pending: false, login_success: true };
     case types.SET_AUTH_ERROR:
