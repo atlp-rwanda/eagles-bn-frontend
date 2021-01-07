@@ -13,6 +13,7 @@
   --color-grey-dark-3: #1a202c;
   --color-danger: #e53e3e;
   --color-success: #38a169;
+  --color-warning: #f0ad4e;
 }
 
 *,
@@ -135,6 +136,19 @@ a:hover {
   }
   &:hover {
     background-color: var(--primary-color-light);
+  }
+}
+.btn-warning {
+  &,
+  .btn-primary:link {
+    background-color: var(--color-warning) !important;
+    color: #ffff !important;
+  }
+  &:focus {
+    background-color: var(--color-warning);
+  }
+  &:hover {
+    background-color: var(--color-warning);
   }
 }
 .btn-danger {

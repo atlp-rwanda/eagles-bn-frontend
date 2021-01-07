@@ -6,10 +6,13 @@ import { requestsReducer } from './requests';
 import { tripStatusReducer } from '../tripStatus/reducer';
 import { authReducer } from './auth';
 import { userReducer } from './user';
+import { accommodationReducer } from '../accommodations/accommodationsReducers';
+import location from '../accommodations/locationReducer';
 import profileReducer from './profile';
 import oauthReducer from './oauthReducer';
 import notificationsReducer from './notifications';
 import accommodations from '../accommodations/accommodationReducer';
+import {roomsReducer} from '../rooms/roomReducer'
 
 const allReducer = combineReducers({
   auth: authReducer,
@@ -22,6 +25,9 @@ const allReducer = combineReducers({
   socialLogin: oauthReducer,
   payload: accommodations,
   notifications: notificationsReducer,
+  accommodation: accommodationReducer,
+  location,
+  allRooms: roomsReducer
 });
 
 export default allReducer;
