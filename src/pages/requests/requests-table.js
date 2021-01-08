@@ -3,36 +3,40 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
 import Badge from '../../components/badge/badge';
-
-class RequestsTable extends Component {
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+export  class RequestsTable extends Component {
   constructor() {
     super();
     this.state = {
-      status: 'rejected',
-      tripId: '',
-      submitted: false,
+      status: "",
+      tripId:'',
+      submitted:false,
+
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  // componentDidUpdate(prevPros, prevState) {
-  //   const { tripId, status, submitted } = this.state;
-  //   const updatedRequest = prevPros.requests.find((req) => req.id === Number(tripId));
-  //   if (status != '' && status != updatedRequest.status && tripId != '' && !submitted) this.handleSubmit();
-  // }
-
-  handleSubmit() {
-    const { status, tripId } = this.state;
-    const { updateTripStatus } = this.props;
-    updateTripStatus({ status }, tripId);
-    this.setState({ submitted: true });
-    window.location.reload();
-  }
-
-  handleChange(e) {
+  handleChange(e){
     e.preventDefault();
-    this.setState({ status: e.target.value, tripId: e.target.id });
+    this.setState({status:e.target.value, tripId:e.target.id,openModal:true});
+  }
+  handleSubmit (e){
+    e.preventDefault()
+    const {status, tripId}= this.state
+    const trip = {status}
+    this.props.updateTripStatus(trip,tripId)
+    this.setState({submitted:true})
+      
+  }
+  componentDidUpdate(prevPros, prevState){
+    const updatedRequest = prevPros.requests.find(request=>request.id===Number(this.state.tripId))
+    if(this.state.status!="" &&this.state.status!=updatedRequest.status){
+      // if(this.state.tripId!="" && !this.state.submitted){
+      //  this.handleSubmit()
+      // }
+    }
+    
   }
 
   getColumns() {
@@ -100,14 +104,30 @@ class RequestsTable extends Component {
       },
       {
         name: 'Actions',
-        // eslint-disable-next-line no-confusing-arrow
-        cell: (row) => (user.role === 'manager') ?  (
-          <select className="form-control" onChange={this.handleChange} value={this.state.status} id={row.id}>
-            <option value="rejected">reject</option>
-            <option value="approved">approve</option>
-          </select>
-        ) : (<a href="#" className="btn btn-primary btn-xs">Edit</a>),
-        hide: 'sm',
+        cell: (row) => this.props.user.role==='manager'? 
+        <Popup trigger={<button className="btn btn-primary btn-xs" >Edit status</button> } modal open   closeOnEscape>
+        {close => (
+          <div>
+              <h1 className={this.props.tripStatusMessage?'text-success' : 'text-invalid'}>{this.props.tripStatusMessage || this.props.tripStatusError}</h1>
+            {/* {this.props.tripStatusMessage? setInterval(() => {
+             window.location.replace('/dashboard')
+            }, 3000):null} */}
+            <a className="close" onClick={close} >
+              &times;
+            </a>
+            <form className="form-group" onSubmit={this.handleSubmit}>
+            <select className="form-control" onChange={this.handleChange} value={!this.state.status?row.status:this.state.status} id={row.id} >
+        <option  value="rejected" >Reject</option>
+         <option  value="approved">Approve</option>
+         </select>
+         <button type="submit" className={!this.props.isLoading ? 'btn btn-primary' : 'btn btn-primary btn-loading'} data-testid="Register">{this.props.isLoading ? 'Changing...' : 'Change'}</button>
+            </form>
+          </div>
+        )}
+      </Popup>
+        
+    :(<a href="#" className="btn btn-primary btn-xs">Edit</a>),
+           hide: 'sm',
       },
     ];
   }

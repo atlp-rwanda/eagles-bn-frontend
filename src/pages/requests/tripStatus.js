@@ -1,15 +1,16 @@
 import React from 'react'
-
+import Popup from 'reactjs-popup';
 function tripStatus() {
-    const handleChange=()=>{
-        console.log("changed in ..")
-    }
-    return (
-        <select className="form-control" onChange={handleChange}>
-        <option value="rejected">reject</option>
-        <option value="approved">approve</option>
-    </select>
-    )
+    <Popup trigger={<button>Trigger</button>} position="top left">
+    {close => (
+      <div>
+        Content here
+        <a className="close" onClick={close}>
+          &times;
+        </a>
+      </div>
+    )}
+  </Popup>
 }
 
 export default tripStatus

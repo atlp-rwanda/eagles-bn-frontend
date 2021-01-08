@@ -44,9 +44,10 @@ class Requests extends Component {
             </div>
           </form>
           {this.props.pending ? <Skeleton count={20} height={40}/> :
-            this.props.isLoading?"Wait....":
             <RequestsTable requests={this.props.requests} user={this.props.user} 
             updateTripStatus={this.props.updateTripStatus}fetchRequests={this.props.fetchRequests}
+            tripStatusMessage={this.props.tripStatusMessage} tripStatusError={this.props.tripStatusError}
+            isLoading={this.props.isLoading}
            />}
         </div>
       </div>

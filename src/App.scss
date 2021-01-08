@@ -87,7 +87,12 @@ a:hover {
 .form-group {
   margin-bottom: 2rem;
 }
-
+.close{
+  font-size: 2.5rem;
+}
+.close:hover{
+cursor: pointer;
+}
 .btn {
   &,
   &:link {
