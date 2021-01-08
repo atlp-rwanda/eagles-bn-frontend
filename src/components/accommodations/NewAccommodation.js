@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { fetchLocation } from '../../store/accommodations/accommodationActions';
 import { accommodation } from './mapStateToProps';
+import jwt_decode from 'jwt-decode'
+import { Redirect } from 'react-router-dom';
 
 class NewAccommodation extends Component {
   constructor() {
@@ -86,7 +88,16 @@ class NewAccommodation extends Component {
 
   render() {
     const { locations } = this.props;
-    console.log('locationsssssssss', locations);
+    const allowedRoles = ['admin', 'super-admin', 'manager', 'requester'];
+    const token = localStorage.getItem('token');
+    if (token) {
+      const { payload: { role }, } = jwt_decode(token);
+      if (allowedRoles.includes(role)) {   
+        if (role !== 'manager') {
+          return <Redirect from="/accommodations/create" to="/dashboard" />;
+        }
+      }
+    }
     return (
       <div className="form-container">
         <div className="header">

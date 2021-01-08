@@ -12,7 +12,7 @@ import Signup from './components/Signup';
 import Logout from './pages/auth/Logout';
 import Login from './pages/auth/login/login';
 import Profile from './pages/Profile';
-// import Navbar from './components/shared/Navbar';
+import Navbar from './components/shared/Navbar';
 import NewAccommodation from './components/accommodations/NewAccommodation';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.scss';
@@ -35,8 +35,10 @@ function App() {
           <Route
             exact
             path="/accommodations/create"
-            component={NewAccommodation}
-          />
+          >
+            <Navbar />
+            <NewAccommodation />
+          </Route>
           <Route component={Main} />
         </Switch>
       </div>

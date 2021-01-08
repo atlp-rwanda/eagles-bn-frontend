@@ -63,7 +63,7 @@ class Accomodations extends Component {
         )}
         <h1 style={{ marginBottom: '1rem' }}>{this.displayButton()}</h1>
         {/* <CreateAccommodation /> */}
-        {accommodations.map((accommodation) => (
+        {accommodations?.map((accommodation) => (
           <div key={accommodation.id}>
             <AccommodationsView
               image={accommodation.images[0]}
