@@ -13,7 +13,7 @@ export const fetchAllAccommodations = () => (dispatch) => {
       return accommodations.data.data;
     })
     .catch((error) => {
-      dispatch(fetchAccommodationFailure(error));
+      dispatch(fetchAccommodationFailure(error.response.data));
     });
 };
 export const fetchSingleAccommodation = (accommodationId) => (dispatch) => {
@@ -27,6 +27,6 @@ export const fetchSingleAccommodation = (accommodationId) => (dispatch) => {
       return res.data.data;
     })
     .catch((error) => {
-      dispatch(fetchSingleAccommodationFailure(error));
+      dispatch(fetchSingleAccommodationFailure(error.response.data));
     });
 };
