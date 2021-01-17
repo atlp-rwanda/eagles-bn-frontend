@@ -12,7 +12,9 @@ import profileReducer from './profile';
 import oauthReducer from './oauthReducer';
 import notificationsReducer from './notifications';
 import accommodations from '../accommodations/accommodationReducer';
-import {roomsReducer} from '../rooms/roomReducer'
+import {roomsReducer} from '../rooms/roomReducer';
+import passwordReducer from './password/password.reducer';
+import resetPassReducer from './password/reset.password.reducer';
 
 const allReducer = combineReducers({
   auth: authReducer,
@@ -27,7 +29,9 @@ const allReducer = combineReducers({
   notifications: notificationsReducer,
   accommodation: accommodationReducer,
   location,
-  allRooms: roomsReducer
+  allRooms: roomsReducer,
+  passwordReducer,
+  resetPassReducer,
 });
 
 export default allReducer;

@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
+import axios from 'axios';
 import './login.scss';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
@@ -12,6 +13,9 @@ import { FormInput } from '../../../components/form/input/input';
 import { getIsLoggedIn, getLoginError, getLoginPending } from '../../../store/reducers/auth';
 import SocialLogin from '../../../components/socialLogin/socialView';
 import oauthActions from '../../../store/actions/oauth/oauthAction';
+
+
+import { setLoading } from '../../../store/actions/loading';
 
 class Login extends Component {
   constructor() {
@@ -53,9 +57,27 @@ class Login extends Component {
   }
 
   render() {
-    const { is_logged_in, loading, error } = this.props;
-    const { oauthSuccess, form } = this.state;
-    if (is_logged_in || oauthSuccess) return <Redirect to="/dashboard" from="/login" />;
+    if (this.props.is_logged_in)
+      return <Redirect to="/dashboard" from="/login" />;
+    this.props.authStatus(true);
+    this.props.setLoading(true);
+    axios
+      .post('/user/login', { ...this.state.form })
+      .then(({ data }) => {
+        localStorage.setItem('token', data.accessToken);
+        this.props.setLoading(false);
+        this.setState({ redirect: true });
+      })
+      .catch(({ response }) => {
+        if (response && response.status !== 500) {
+          this.setState({
+            errMessage: 'Invalid login credentials',
+            loginFailed: true,
+          });
+        }
+        this.props.setLoading(false);
+      });
+    if (this.state.redirect) return <Redirect to="/dashboard" from="/login" />;
     return (
       <div className="login-container">
         <div className="login-container__image" />
@@ -64,21 +86,39 @@ class Login extends Component {
           <div className="login-container__form__title">
             <h2 className="login-container__form__title-title">
               Welcome to
-              <b> Barefoot Nomad</b>
-              !
+              <b> Barefoot Nomad</b>!
             </h2>
             <p className="login-container__form__title-register">
               New here? &nbsp;
               <Link to="/signup">create an account!</Link>
             </p>
           </div>
-          <form className="login-container__form-form" onSubmit={this.handleSubmit}>
-            <FormInput label="E-mail" type="email" required invalid={error && error.status !== 500} changed={this.handleEmail} value={form.email} errMessage={error ? error.message : null} />
-            <FormInput type="password" value={form.password} label="Password" changed={this.handlePassword} />
-            <a href="#" className="forgot-password">Forgot password?</a>
+          <form
+            className="login-container__form-form"
+            onSubmit={this.handleSubmit}
+          >
+            <FormInput
+              label="E-mail"
+              type="email"
+              required
+              invalid={this.props.error && this.props.error.status !== 500}
+              changed={this.handleEmail}
+              value={this.state.form.email}
+              errMessage={this.props.error ? this.props.error.message : null}
+            />
+            <FormInput
+              type="password"
+              value={this.state.form.password}
+              label="Password"
+              changed={this.handlePassword}
+            />
+            <a href="/forgotPassword" className="forgot-password">
+              Forgot password?
+            </a>
             <div className="form-group">
-              <button type="submit" className="btn btn-primary">{loading ? 'Logging in...' : 'Login'}</button>
-              <SocialLogin />
+              <button type="submit" className="btn btn-primary">
+                {this.props.loading ? 'Logging in...' : 'Login'}
+              </button>
             </div>
           </form>
         </div>
